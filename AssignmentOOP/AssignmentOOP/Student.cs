@@ -6,7 +6,57 @@ using System.Threading.Tasks;
 
 namespace AssignmentOOP
 {
-    class Student
+    class Student : Ticket
     {
+        //ATTRIBUTES
+        public string LevelOfStudy { get; set; }
+
+        //CONSTRUCTORS
+        //Default
+        public Student() { }
+
+        //Parameterized
+        public Student(Screening s, string los) : base(s)
+        {
+            LevelOfStudy = los;
+        }
+
+        //METHODS
+        public override double CalculatePrice()
+        {
+            if (base.screening.ScreeningType == "3D")
+            {
+                DateTime dt = new DateTime();
+                if (dt.DayOfWeek == DayOfWeek.Friday || dt.DayOfWeek == DayOfWeek.Saturday || dt.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    return 14.00;
+                }
+
+                else
+                {
+                    return 8.00;
+                }
+            }
+
+            else
+            {
+                DateTime dt = new DateTime();
+                if (dt.DayOfWeek == DayOfWeek.Friday || dt.DayOfWeek == DayOfWeek.Saturday || dt.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    return 12.50;
+                }
+
+                else
+                {
+                    return 7.00;
+                }
+            }
+        }
+
+        //TOSTRING
+        public override string ToString()
+        {
+            return (base.ToString() + "LevelOfStudy: " + LevelOfStudy);
+        }
     }
 }
